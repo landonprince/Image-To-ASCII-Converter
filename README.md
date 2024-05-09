@@ -50,3 +50,4 @@ The ASCII art is generated and returned in a text file. Simply enter the file pa
 - Standard Template Library
 - Smart pointers
 - Input validation & exception handling
+- File output
