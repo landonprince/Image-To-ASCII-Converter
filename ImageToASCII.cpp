@@ -12,7 +12,7 @@ ImageToASCII* ImageToASCII::instance() {
     return inst;
 }
 
-int ImageToASCII::uploadImage(const std::string& imagePath) {
+int ImageToASCII::loadImage(const std::string& imagePath) {
     if (!isSupported(imagePath)) {
         std::cerr << "Unsupported file format." << std::endl;
         return -1;
@@ -29,14 +29,16 @@ int ImageToASCII::uploadImage(const std::string& imagePath) {
         return -1;
     }
     image = std::move(newImage);
+    std::cout << "Image successfully loaded." << std::endl;
     return 0;
 }
 
-void ImageToASCII::convertToASCII() {
+int ImageToASCII::convertToASCII() {
     if (!image) {
         std::cerr << "No image loaded." << std::endl;
-        return;
+        return -1;
     }
+
     const char* levels = "@%#*+=-:. ";
     size_t scale = 255 / (strlen(levels) - 1);
     std::string result;
@@ -50,24 +52,29 @@ void ImageToASCII::convertToASCII() {
         result += '\n';
     }
     asciiArt = result;
+    std::cout << "Image successfully converted to ASCII." << std::endl;
+    return 0;
 }
 
-void ImageToASCII::displayASCII() const {
+int ImageToASCII::displayASCII() const {
     if (!asciiArt.empty()) {
-        std::ofstream file("output.txt");
+        std::ofstream file("ascii.txt");
         if (file.is_open()) {
             file << asciiArt;
             file.close();
-            std::cout << "ASCII art has been saved to output.txt" << std::endl;
+            std::cout << "ASCII art has been saved to ascii.txt" << std::endl;
+            return 0;
         } else {
             std::cerr << "Unable to open file to save ASCII art." << std::endl;
+            return -1;
         }
     } else {
         std::cerr << "Failed to convert image to ASCII." << std::endl;
+        return -1;
     }
 }
 
-std::string ImageToASCII::getImagePath() const {
+[[maybe_unused]] std::string ImageToASCII::getImagePath() const {
     return imageFilePath;
 }
 
