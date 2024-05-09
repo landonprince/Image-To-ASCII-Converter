@@ -1,6 +1,11 @@
+// By: Landon Prince (5/9/2024)
+
 #include "ImageToASCII.h"
 #include <iostream>
 
+/**
+* Entry point of the program. Facilitates imageToASCII
+*/
 int main() {
     std::cout << "\n-- Image to ASCII (C++ Edition) --\n";
     std::cout << "     By: Landon Prince\n\n";

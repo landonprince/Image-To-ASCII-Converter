@@ -1,3 +1,5 @@
+// By: Landon Prince (5/9/2024)
+
 #include "ImageToASCII.h"
 #include <opencv2/opencv.hpp>
 #include <filesystem>

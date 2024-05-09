@@ -1,3 +1,5 @@
+// By: Landon Prince (5/9/2024)
+
 #ifndef IMAGETOASCII_IMAGETOASCII_H
 #define IMAGETOASCII_IMAGETOASCII_H
 
@@ -5,6 +7,10 @@
 #include <string>
 #include <memory>
 
+/**
+* ImageToASCII class includes all logic involved in converting
+* a standard image into ASCII art.
+*/
 class ImageToASCII {
 public:
     /**
