@@ -8,21 +8,22 @@
 class ImageToASCII {
 public:
     static ImageToASCII* instance();
-    int uploadImage(const std::string& imagePath);
-    std::string getImagePath();
-    void convertToASCII();
     ImageToASCII(const ImageToASCII&) = delete;
     ImageToASCII& operator=(const ImageToASCII&) = delete;
+
+    int uploadImage(const std::string& imagePath);
+    void convertToASCII();
     void displayASCII() const;
+    [[nodiscard]] std::string getImagePath() const;
 
 private:
     ImageToASCII() = default;
     static bool isSupported(const std::string &filename) ;
-    std::unique_ptr<cv::Mat> image;
-    std::string imageFilePath;
+
     static ImageToASCII* inst;
+    std::unique_ptr<cv::Mat> image;
     std::string asciiArt;
-
-
+    std::string imageFilePath;
 };
+
 #endif //IMAGETOASCII_IMAGETOASCII_H

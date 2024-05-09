@@ -12,10 +12,6 @@ ImageToASCII* ImageToASCII::instance() {
     return inst;
 }
 
-std::string ImageToASCII::getImagePath() {
-    return imageFilePath;
-}
-
 int ImageToASCII::uploadImage(const std::string& imagePath) {
     if (!isSupported(imagePath)) {
         std::cerr << "Unsupported file format." << std::endl;
@@ -69,6 +65,10 @@ void ImageToASCII::displayASCII() const {
     } else {
         std::cerr << "Failed to convert image to ASCII." << std::endl;
     }
+}
+
+std::string ImageToASCII::getImagePath() const {
+    return imageFilePath;
 }
 
 bool ImageToASCII::isSupported(const std::string &filename) {
